@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 #define offset "\t\t\t\t"
 
@@ -6,18 +6,18 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int array_size;
-	cout << offset << "Ââåäèòå ðàçìåð ìàññèâà: "; cin >> array_size;
+	cout << offset << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð¼Ð°ÑÑÐ¸Ð²Ð°: "; cin >> array_size;
 	int* array = new int[array_size];
 	int sum = 0, max, min;
 	for (int i = 0; i < array_size; i++)
 	{
-		cout << offset << "Ýëåìåíò #" << i + 1 << " -> ";
+		cout << offset << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚ #" << i + 1 << " -> ";
 		cin >> array[i];
 	}
 	cout << endl;
 	max = array[0];
 	min = array[0];
-	cout << offset << "Ýëåìåíòû ìàññèâà â ïðÿìîì ïîðÿäêå: ";
+	cout << offset << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð² Ð¿Ñ€ÑÐ¼Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ: ";
 	for (int i = 0; i < array_size; i++)
 	{
 		sum += array[i];
@@ -25,13 +25,13 @@ void main()
 		if (min > array[i]) min = array[i];
 		cout << array[i] << " ";
 	}
-	cout << "\n" << offset << "Ýëåìåíòû ìàññèâà â îáðàòíîì ïîðÿäêå: ";
+	cout << "\n" << offset << "Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¼Ð°ÑÑÐ¸Ð²Ð° Ð² Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ: ";
 	for (int i = array_size - 1; i >= 0; i--)
 	{
 		cout << array[i] << " ";
 	}
-	cout << "\n" << offset << "Ñóììà ýëåìåíòîâ ìàññèâà ðàâíà " << sum;
-	cout << "\n" << offset << "Ñðåäíåàðèôìåòè÷åñêîå ýëåìåíòîâ ìàññèâà ðàâíî " << (float)(sum) / (float)(array_size);
-	cout << "\n" << offset << "Íàèáîëüøåå çíà÷åíèå ñðåäè ýëåìåíòîâ: " << max;
-	cout << "\n" << offset << "Íàèìåíüøåå çíà÷åíèå ñðåäè ýëåìåíòîâ: " << min;
+	cout << "\n" << offset << "Ð¡ÑƒÐ¼Ð¼Ð° ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð° Ñ€Ð°Ð²Ð½Ð° " << sum;
+	cout << "\n" << offset << "Ð¡Ñ€ÐµÐ´Ð½ÐµÐ°Ñ€Ð¸Ñ„Ð¼ÐµÑ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð¼Ð°ÑÑÐ¸Ð²Ð° Ñ€Ð°Ð²Ð½Ð¾ " << (float)(sum) / (float)(array_size);
+	cout << "\n" << offset << "ÐÐ°Ð¸Ð±Ð¾Ð»ÑŒÑˆÐµÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÑ€ÐµÐ´Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: " << max;
+	cout << "\n" << offset << "ÐÐ°Ð¸Ð¼ÐµÐ½ÑŒÑˆÐµÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑÑ€ÐµÐ´Ð¸ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð²: " << min;
 }
