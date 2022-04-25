@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Array", "Array\Array.vcxproj", "{FC36CC5E-7341-4565-A02E-550AA7BDBE24}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Overload Functions", "Overload Functions\Overload Functions.vcxproj", "{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{FC36CC5E-7341-4565-A02E-550AA7BDBE24}.Release|x64.Build.0 = Release|x64
 		{FC36CC5E-7341-4565-A02E-550AA7BDBE24}.Release|x86.ActiveCfg = Release|Win32
 		{FC36CC5E-7341-4565-A02E-550AA7BDBE24}.Release|x86.Build.0 = Release|Win32
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Debug|x64.ActiveCfg = Debug|x64
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Debug|x64.Build.0 = Debug|x64
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Debug|x86.Build.0 = Debug|Win32
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Release|x64.ActiveCfg = Release|x64
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Release|x64.Build.0 = Release|x64
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Release|x86.ActiveCfg = Release|Win32
+		{EA60B03A-B112-4AF7-BF5C-EB27BBFB8668}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
