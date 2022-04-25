@@ -1,28 +1,53 @@
 ﻿#include <iostream>
 #include <math.h>
 using namespace std;
-#define offset "\t"
 
-template <typename T1, typename T2>
-
-void fillrand(T1* array, T2 array_size)	//заполнение массива
+// Перегрузка функции заполнения случайными числами
+void fillrand(int* array, int array_size)	//заполнение массива int
 {
+	cout << "\nМассив элементов типа [INT]"<<endl;
 	for (int i = 0; i < array_size; i++)
 	{
-		array[i] = rand() % 100*pow(-1,rand()%2);
+		array[i] = rand() % 100 * pow(-1, rand() % 2);
+	}
+}
+void fillrand(float* array, int array_size)	//заполнение массива float
+{
+	cout << "\nМассив элементов типа [FLOAT]" << endl;
+	for (int i = 0; i < array_size; i++)
+	{
+		array[i] = pow(-1, rand() % 2) / rand() * 10000;
+	}
+}
+void fillrand(double* array, int array_size)	//заполнение массива double
+{
+	cout << "\nМассив элементов типа [DOUBLE]" << endl;
+	for (int i = 0; i < array_size; i++)
+	{
+		array[i] = rand() * pow(-1, rand() % 2);
+	}
+}
+void fillrand(char* array, int array_size)	//заполнение массива char
+{
+	cout << "\nМассив элементов типа [CHAR]" << endl;
+	for (int i = 0; i < array_size; i++)
+	{
+		array[i] = rand()%26+65;
 	}
 }
 
-void print(T *array, int array_size, bool print_all)	// вывод массива на экран в прямом и обратном порядке
+// Вывод массива на экран в прямом и обратном порядке (шаблонная функция)
+template <typename T>
+void print(T* array, int array_size, bool print_all)	
 {
-	(print_all) ? cout << offset << "Элементы массива в прямом порядке: " : cout<<"";
+	(print_all) ? cout <<  "Элементы массива в прямом порядке: " : cout << "";
 	for (int i = 0; i < array_size; i++)
 	{
 		cout << array[i] << " ";
 	}
 	if (print_all)
 	{
-		cout << "\n" << offset << "Элементы массива в обратном порядке: ";
+		cout << "\n" <<  "Элементы массива в обратном порядке: ";
 		for (int i = array_size - 1; i >= 0; i--)
 		{
 			cout << array[i] << " ";
@@ -30,9 +55,11 @@ void print(T *array, int array_size, bool print_all)	// вывод массив�
 	}
 }
 
-int sum(int* array, int array_size)	// сумма элементов массива
+// Сумма элементов массива (шаблонная функция) (без char)
+template <typename T>
+T sum(T* array, int array_size)	// сумма элементов массива
 {
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0; i < array_size; i++)
 	{
 		sum += array[i];
@@ -40,9 +67,18 @@ int sum(int* array, int array_size)	// сумма элементов масси�
 	return sum;
 }
 
-int minValueIn(int* array, int array_size, int i)	// минимальный элемент в массиве
+// Средне арифметическое элементов массива (шаблонная функция) (без char)
+template <typename T>
+double avg(T* array, int array_size)
 {
-	int min = array[i];
+	return sum(array, array_size) / array_size;
+}
+
+// Минимальный элемент в массиве (шаблонная функция)
+template <typename T>
+T minValueIn(T* array, int array_size, int i)	
+{
+	T min = array[i];
 	for (i = 0; i < array_size; i++)
 	{
 		if (min > array[i]) min = array[i];
@@ -50,9 +86,11 @@ int minValueIn(int* array, int array_size, int i)	// минимальный эл
 	return min;
 }
 
-int maxValueIn(int* array, int array_size)	// максимальный элемент в массиве
+// Максимальный элемент в массиве (шаблонная функция)
+template <typename T>
+T maxValueIn(T* array, int array_size)
 {
-	int max = array[0];
+	T max = array[0];
 	for (int i = 0; i < array_size; i++)
 	{
 		if (max < array[i]) max = array[i];
@@ -60,9 +98,11 @@ int maxValueIn(int* array, int array_size)	// максимальный элем�
 	return max;
 }
 
-void shiftLeft(int* array, int array_size, int shift) // сдвиг влево
+// Сдвиг влево на n-элементов
+template <typename T>
+void shiftLeft(T* array, int array_size, int shift)
 {
-	int temp;
+	T temp;
 	for (int j = 0; j < shift; j++)
 	{
 		temp = array[array_size - 1];
@@ -74,9 +114,11 @@ void shiftLeft(int* array, int array_size, int shift) // сдвиг влево
 	}
 }
 
-void shiftRight(int* array, int array_size, int shift)	// сдвиг вправо
+// Сдвиг вправо на n-элементов
+template <typename T>
+void shiftRight(T* array, int array_size, int shift)
 {
-	int temp;
+	T temp;
 	for (int j = 0; j < shift; j++)
 	{
 		temp = array[0];
@@ -88,9 +130,11 @@ void shiftRight(int* array, int array_size, int shift)	// сдвиг вправ�
 	}
 }
 
-void Sort(int* array, int array_size)
+// Сортировка по возрастанию алгоритмом выбора
+template <typename T>
+void Sort(T* array, int array_size)
 {
-	int min;
+	T min;
 	for (int i = 0; i < array_size; i++)
 	{
 		min = array[i];
@@ -106,27 +150,52 @@ void Sort(int* array, int array_size)
 	}
 }
 
+// Вызов всех функций
+template <typename T>
+void do_all(T* array, int array_size, int shift, bool isChar)
+{
+	fillrand(array, array_size);
+	print(array, array_size, true);
+	if (!isChar)
+	{
+		cout << "\n" << "Сумма элементов массива равна " << sum(array, array_size);
+		cout << "\n" << "Среднеарифметическое элементов массива равно " << avg(array, array_size);
+	}
+	cout << "\n" << "Наибольшее значение среди элементов: " << maxValueIn(array, array_size);
+	cout << "\n" << "Наименьшее значение среди элементов: " << minValueIn(array, array_size, 0);
+	cout << "\n" << "Сдвиг вправо на " << shift << " элементов ";
+	shiftLeft(array, array_size, shift);
+	print(array, array_size, false);
+	cout << "\n" << "Сдвиг влево на " << shift << " элементов ";
+	shiftRight(array, array_size, shift);
+	print(array, array_size, false);
+	cout << "\n" << "Произведём сортировку массива в порядке возрастания: ";
+	Sort(array, array_size);
+	print(array, array_size, false);
+	cout << endl;
+}
+
 void main()
 {
 	setlocale(LC_ALL, "");
 	int array_size, shift;
-	cout << offset << "Введите размер массива: "; cin >> array_size;
-	int* array = new int[array_size];
-	fillrand<int>(array, array_size);
-	print<int>(array, array_size, true);
-	//cout << "\n" << offset << "Сумма элементов массива равна " << sum(array, array_size);
-	//cout << "\n" << offset << "Среднеарифметическое элементов массива равно " << (float)(sum(array, array_size)) / (array_size);
-	//cout << "\n" << offset << "Наибольшее значение среди элементов: " << maxValueIn(array, array_size);
-	//cout << "\n" << offset << "Наименьшее значение среди элементов: " << minValueIn(array, array_size, 0);
-	//shift = rand() % array_size;
-	//cout << "\n" << offset << "Сдвиг вправо на "<<shift<<" элементов ";
-	//shiftLeft(array, array_size, shift);
-	//print(array, array_size, false);
-	//cout << "\n" << offset << "Сдвиг влево на " << shift << " элементов ";
-	//shiftRight(array, array_size, shift);
-	//print(array, array_size, false);
-	//cout << "\n" << offset << "Произведём сортировку массива в порядке возрастания: ";
-	//Sort(array, array_size);
-	//print(array, array_size, false);
-	//cout << endl;
+	cout << "Введите размер массива: "; cin >> array_size;
+	shift = rand() % array_size;
+	
+	int* array_int = new int[array_size];
+	do_all(array_int, array_size, shift, false);
+	
+	float* array_float = new float[array_size];
+	do_all(array_float, array_size, shift, false);
+	
+	double* array_double = new double[array_size];
+	do_all(array_double, array_size, shift, false);
+
+	char* array_char = new char[array_size];
+	do_all(array_char, array_size, shift, true);
+
+	delete[] array_int;
+	delete[] array_float;
+	delete[] array_double;
+	delete[] array_char;
 }
