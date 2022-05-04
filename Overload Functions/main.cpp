@@ -175,10 +175,11 @@ void do_all(T* array, int array_size, int shift, bool isChar)
 	cout << endl;
 }
 
-void main()
+void main() //
 {
 	setlocale(LC_ALL, "");
 	int array_size, shift;
+
 	cout << "Введите размер массива: "; cin >> array_size;
 	shift = rand() % array_size;
 	
